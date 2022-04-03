@@ -73,7 +73,7 @@ class KalkulatorHemat extends Kalkulator{
 }
 
 
-
+echo "";
 echo "pilih kalkulator\n";
 echo "1.kalkulator biasa\n";
 echo "2.kalkulator hemat\n";
