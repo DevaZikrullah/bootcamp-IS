@@ -28,19 +28,14 @@ class Kalkulator{
         switch($bil){
             case "1":
                 return $this->Limit($bil1+$bil2);
-                break;
             case "2":
                 return $this->Limit($bil1-$bil2);
-                break;
             case "3":
                 return $this->Limit($bil1*$bil2);
-                break;
             case "4":
                 return $this->Limit($bil1/$bil2);
-                break; 
             case "5":
                 return $this->Limit(pow($bil1,$bil2));
-                break;
             default:
                 throw new Exception("Tidak Menemukan opreasi");                   
         }
