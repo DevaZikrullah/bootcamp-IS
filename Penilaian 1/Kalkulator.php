@@ -17,7 +17,7 @@ class Kalkulator{
         }
     }
         
-    public function Hitung(int $bil1,int $bil2,string $bil,$dayapakai = 10)
+    public function Hitung(float $bil1,float $bil2,string $bil,$dayapakai = 10)
     {
         $this->daya -= $dayapakai;
         if ($this->daya < 0){
@@ -35,10 +35,14 @@ class Kalkulator{
                 return $this->Limit($bil1*$bil2);
                 
             case "4":
-                return $this->Limit($bil1/$bil2);
-                
+                try {
+                    return $this->Limit($bil1/$bil2);
+                } catch (DivisionByZeroError) {
+                    echo "Tidak Bisa dibagi 0 \n";
+                }
+                                
             case "5":
-                return $this->Limit(pow($bil1,$bil2));
+                return intval ($this->Limit(pow($bil1,$bil2)));
             default:
                 echo "Masukan Operasi 1-6";                 
         }
@@ -59,9 +63,9 @@ class Kalkulator{
 }
 
 class KalkulatorHemat extends Kalkulator{
-    public function Hitung(int $bil1,int $bil2,string $bil,$dayapakai = 5)
+    public function Hitung(float $bil1,float $bil2,string $bil,$dayapakai = 5)
     {
-        return parent::Hitung($bil1, $bil2,$bil, 5);
+        return parent::Hitung($bil1,$bil2,$bil, 5);
     }
 }
 
