@@ -8,10 +8,10 @@ class Kalkulator{
         $this->daya= 0;
     }
 
-    public function Limit(int $a)
+    public function Limit($a)
     {
         if($a > 1000000){
-            throw new Exception("Hasil Harus dibawah 1000000");
+            throw new Exception("Nilai diluar batas yang ditentukan");
         } else {
             echo $a;
         }
@@ -110,4 +110,4 @@ if($bil == 1){
 }else {
     throw new Exception("Tidak menemukan kalkulator");
 }
-?>
+?> 
