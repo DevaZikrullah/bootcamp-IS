@@ -16,30 +16,32 @@ class Kalkulator{
             echo $a;
         }
     }
-    
-    
-    public function Hitung(int $bil1,int $bil2,int $bil,$dayapakai = 10)
+        
+    public function Hitung(int $bil1,int $bil2,string $bil,$dayapakai = 10)
     {
-        $this->cekDaya();
         $this->daya -= $dayapakai;
         if ($this->daya < 0){
-            throw new Exception("Daya Masih belum cukup");
+            echo "Daya Masih belum cukup";
+            return false;
         }
         switch($bil){
             case "1":
                 return $this->Limit($bil1+$bil2);
+                
             case "2":
                 return $this->Limit($bil1-$bil2);
+                
             case "3":
                 return $this->Limit($bil1*$bil2);
+                
             case "4":
                 return $this->Limit($bil1/$bil2);
+                
             case "5":
                 return $this->Limit(pow($bil1,$bil2));
             default:
-                throw new Exception("Tidak Menemukan opreasi");                   
+                echo "Masukan Operasi 1-6";                 
         }
-
     }
     
     public function tambahDaya()
@@ -50,28 +52,17 @@ class Kalkulator{
     public function cekDaya()
     {
         if($this->daya <= 0){
-            throw new Exception("Daya Kurang");
+            echo "Daya Kurang";
         }        
     }
     
 }
 
 class KalkulatorHemat extends Kalkulator{
-    public function Hitung(int $bil1,int $bil2,int $bil,$dayapakai = 5)
+    public function Hitung(int $bil1,int $bil2,string $bil,$dayapakai = 5)
     {
         return parent::Hitung($bil1, $bil2,$bil, 5);
     }
-}
-
-function KalkulatorBiasa()
-{
-    $calc = new Kalkulator();
-    operasi($calc);    
-}
-function kalkulatorHemat()
-{
-    $calc = new KalkulatorHemat();
-    operasi($calc);    
 }
 
 function operasi($calc)
@@ -85,7 +76,7 @@ function operasi($calc)
         echo "5.Pemangkatan\n";
         echo "6.Isi Daya\n";
         $bil = readline("Masukan Operasi : ");
-
+        
         if ($bil == 6)
         {
             $calc->tambahDaya();             
@@ -93,8 +84,10 @@ function operasi($calc)
             $bil1 = readline("masukan bilangan pertama : ");
             $bil2 = readline("masukan bilangan kedua : ");
             echo $calc->Hitung($bil1,$bil2,$bil);
+        }else if ($bil ==  null){
+            echo "masukan angka";
         }else{
-            throw new Exception("Tidak Menemukan Operasi");
+            echo "Tidak Menemukan Operasi" ;
         }
     }
 }
@@ -105,12 +98,12 @@ echo "2.kalkulator hemat\n";
 $bil = readline();
 
 if($bil == 1){
-    KalkulatorBiasa();
+    $calc = new Kalkulator();
+    operasi($calc);
 }else if($bil == 2){
-    kalkulatorHemat();
+    $calc = new KalkulatorHemat();
+    operasi($calc);
 }else {
     throw new Exception("Tidak menemukan kalkulator");
 }
-
-
 ?>
