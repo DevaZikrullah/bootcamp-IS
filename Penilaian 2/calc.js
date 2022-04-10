@@ -1,12 +1,14 @@
 var i = document.getElementById('output');
 var op = document.getElementById('operator');
 
-function l(y){
+function inputAngka(y){
    
     if(i.value=="0"){
         i.value =y;
+        addOperator(y);
     }else{
         i.value += y;
+        addOperator(y);
     }
 
     
@@ -32,3 +34,4 @@ function opDouble(op){
         op.splice(0,1);
     }
 }
+
