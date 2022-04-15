@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { vue } = require('laravel-mix');
+
 require('./bootstrap');
 
 window.Vue = require('vue').default;
@@ -20,6 +22,7 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('to-do', require('./components/ToDoComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
